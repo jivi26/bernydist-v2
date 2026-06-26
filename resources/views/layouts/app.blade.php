@@ -10,17 +10,20 @@
 <body class="h-full bg-gray-50 text-gray-900 antialiased">
 
     {{-- Datos del servidor disponibles para Vue vía window.appData --}}
-    <script>
-        window.appData = @json([
+    @php
+        $appData = [
             'user' => auth()->check() ? [
-                'id'           => auth()->id(),
-                'cliente_id'   => auth()->user()->cliente_id,
-                'nombre'       => auth()->user()->cliente?->NOMBRE,
-                'clave'        => auth()->user()->cliente?->CLAVE_CLIENTE,
+                'id'         => auth()->id(),
+                'cliente_id' => auth()->user()->cliente_id,
+                'nombre'     => auth()->user()->cliente?->NOMBRE,
+                'clave'      => auth()->user()->cliente?->CLAVE_CLIENTE,
             ] : null,
             'csrfToken' => csrf_token(),
             'baseUrl'   => config('app.url'),
-        ]);
+        ];
+    @endphp
+    <script>
+        window.appData = @json($appData);
     </script>
 
     <div id="app">
