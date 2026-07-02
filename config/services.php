@@ -35,4 +35,35 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Sepomex — API de códigos postales mexicanos
+    |--------------------------------------------------------------------------
+    */
+    'sepomex' => [
+        'token' => env('SEPOMEX_TOKEN'),
+        'url'   => 'https://api-sepomex.hckdev.com/consulta_cp/',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Google Maps
+    |--------------------------------------------------------------------------
+    */
+    'google_maps' => [
+        'key'              => env('GOOGLE_MAPS_KEY'),
+        'key_distributed'  => env('GOOGLE_MAPS_KEY_DISTRIBUTED'),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Berny API interna (REST + SOAP)
+    | Equivale a URL_API_CUSTOMER y URL_APP_SERVICIO del legacy index.php
+    |--------------------------------------------------------------------------
+    */
+    'berny_api' => [
+        'url'  => env('BERNY_API_URL'),
+        'soap' => env('BERNY_SOAP_URL'),
+    ],
+
 ];

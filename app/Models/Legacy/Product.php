@@ -39,7 +39,8 @@ class Product extends Model
 
     public function scopeActive($query)
     {
-        return $query->where('existencia', 'S')->where('AGOTADO', '!=', 'S');
+        return $query->where('existencia', 'S')
+            ->where(fn ($q) => $q->where('AGOTADO', '!=', 'S')->orWhereNull('AGOTADO'));
     }
 
     public function scopeForBrand($query, string $tipoArticuloVta)

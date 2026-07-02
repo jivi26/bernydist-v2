@@ -6,8 +6,8 @@
 
       <!-- Marca -->
       <div>
-        <img src="/images/logo_berny.webp" alt="Berny Distribuidora"
-             class="h-10 w-auto object-contain mb-3 brightness-0 invert opacity-80"
+        <img src="/images/logo-black.png" alt="Berny Distribuidora"
+             class="h-10 w-auto object-contain mb-3"
              @error="logoError = true"
              v-show="!logoError" />
         <p v-show="logoError" class="text-xl font-bold text-[#f2b02c] mb-3">BERNY</p>

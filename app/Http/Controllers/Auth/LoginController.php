@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Services\UserSessionService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,6 +11,8 @@ use Illuminate\View\View;
 
 class LoginController extends Controller
 {
+    public function __construct(protected UserSessionService $sessionService) {}
+
     public function showForm(): View|RedirectResponse
     {
         if (Auth::check()) {
@@ -36,6 +39,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
+            $this->sessionService->initSession(Auth::user()->cliente_id);
 
             return redirect()->intended('/');
         }

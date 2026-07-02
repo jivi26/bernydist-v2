@@ -1,6 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import LandingPage   from '@/pages/LandingPage.vue';
-import StorefrontPage from '@/pages/StorefrontPage.vue';
+import LandingPage        from '@/pages/LandingPage.vue';
+import StorefrontPage     from '@/pages/StorefrontPage.vue';
+import LoginPage          from '@/pages/LoginPage.vue';
+import ForgotPasswordPage from '@/pages/ForgotPasswordPage.vue';
+import CatalogPage        from '@/pages/CatalogPage.vue';
+import ProductDetailPage  from '@/pages/ProductDetailPage.vue';
 
 const routes = [
     {
@@ -15,7 +19,31 @@ const routes = [
         component: StorefrontPage,
         meta: { title: 'Berny Mayoreo' },
     },
-    // Rutas futuras: /tecnolite, /catalogo, /producto/:id, etc.
+    {
+        path: '/login',
+        name: 'login',
+        component: LoginPage,
+        meta: { title: 'Iniciar sesión — Berny' },
+    },
+    {
+        path: '/recuperar-password',
+        name: 'forgot-password',
+        component: ForgotPasswordPage,
+        meta: { title: 'Recuperar contraseña — Berny' },
+    },
+    {
+        path: '/catalogo',
+        name: 'catalogo',
+        component: CatalogPage,
+        meta: { title: 'Catálogo — Berny Mayoreo' },
+    },
+    {
+        path: '/catalogo/:id(\\d+)',
+        name: 'producto',
+        component: ProductDetailPage,
+        meta: { title: 'Producto — Berny' },
+    },
+    // Rutas futuras: /tecnolite, etc.
 ];
 
 const router = createRouter({
